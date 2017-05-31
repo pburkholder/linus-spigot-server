@@ -4,8 +4,6 @@
 #
 # Copyright (c) 2017 The Authors, All Rights Reserved.
 
-# apt_update
-
 minecraft_depend 'dependencies' do
   install_all true
 end
@@ -14,6 +12,12 @@ spigot_server 'default' do
     eula true
     action :create
 end
+
+bukkit_plugin 'WorldEdit' do
+    servers 'default'
+    action :install
+end
+
 
 minecraft_service 'default' do
     action [:enable, :start]
