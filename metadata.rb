@@ -6,5 +6,4 @@ description 'Installs/Configures linus-spigot-server'
 long_description 'Installs/Configures linus-spigot-server'
 version '0.1.0'
 
-depends 'minecraft-server'
-depends 'apt'
+depends 'minecraft-server', '>= 0.1.5'

@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2017 The Authors, All Rights Reserved.
 
-include_recipe 'apt::default'
+# apt_update
 
 minecraft_depend 'dependencies' do
   install_all true
