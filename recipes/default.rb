@@ -3,11 +3,13 @@
 # Recipe:: default
 #
 # Copyright (c) 2017 The Authors, All Rights Reserved.
+mchome='/opt/minecraft_servers/default'
 
 minecraft_depend 'dependencies' do
   install_all true
 end
 
+# ToDo: add 'world' property with url of zipped world
 spigot_server 'default' do
     eula true
     action :create
@@ -18,7 +20,13 @@ bukkit_plugin 'WorldEdit' do
     action :install
 end
 
-mchome='/opt/minecraft_servers/default'
+server_properties 'default' do
+  settings({
+    :motd => 'FCS Gameathon Minecraft Severs',
+    :enable_command_block => true
+  })
+end
+
 execute 'unzip_world' do
     cwd mchome
     command 'rm -rf world/; unzip gameathon_world.zip'
@@ -37,8 +45,8 @@ end
 
 directory mchome do
     recursive true
-    owner chefminecraft
-    group chefminecraft
+    owner 'chefminecraft'
+    group 'chefminecraft'
 end
 
 minecraft_service 'default' do
