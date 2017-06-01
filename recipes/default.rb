@@ -18,6 +18,18 @@ bukkit_plugin 'WorldEdit' do
     action :install
 end
 
+mchome='/opt/minecraft_servers/default'
+execute 'unzip_world' do
+    cwd mchome
+    command 'unzip gameathon_world.zip'
+    creates "#{mchome}/world/linus_was_here"
+    action :nothing
+end
+
+cookbook_file '/opt/minecraft_servers/default/gameathon_world.zip' do
+    source 'gameathon_world.zip'
+    notifies :run, 'execute[unzip_world]', :immediately
+end
 
 minecraft_service 'default' do
     action [:enable, :start]
