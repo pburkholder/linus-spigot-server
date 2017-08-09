@@ -39,7 +39,7 @@ Configure:
 
 ```
 sudo mkdir /etc/chef
-sudo cp templates/client.rb /etc/chef
+sudo cp templates/client.rb /etc/chef/solo.rb
 gem install berkshelf
 berks vendor
 ```
