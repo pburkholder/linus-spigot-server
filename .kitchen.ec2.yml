@@ -1,0 +1,27 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: peter_burkholder_personal_aws_ohio
+  security_group_ids: ["sg-72a18f1b"]
+  region: us-east-2
+  require_chef_omnibus: true
+  iam_profile_name: spigot
+  instance_type: t2.medium
+
+transport:
+  ssh_key: /home/peterburkholder/.ssh/peter_burkholder_personal_aws_ohio
+  connection_timeout: 10
+  connection_retries: 5
+  username: ubuntu
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-16.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[linus-spigot-server::default]
+    attributes:
