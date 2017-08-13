@@ -20,6 +20,11 @@ bukkit_plugin 'WorldEdit' do
     action :install
 end
 
+#bukkit_plugin 'VoxelSniper' do
+#    servers 'default'
+#    action :install
+#end
+
 server_properties 'default' do
   settings({
     :motd => 'FCS Gameathon Minecraft Severs',
